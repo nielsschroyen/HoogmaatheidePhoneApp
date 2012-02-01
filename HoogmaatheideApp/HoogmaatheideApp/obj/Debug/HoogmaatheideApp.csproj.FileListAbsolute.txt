@@ -1,0 +1,16 @@
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\ApplicationIcon.png
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\Background.png
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\HoogmaatheideApp.dll
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\HoogmaatheideApp.pdb
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\AppManifest.xaml
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\HoogmaatheideApp.xap
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\ResolveAssemblyReference.cache
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\App.g.i.cs
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\MainPage.g.i.cs
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\HoogmaatheideApp.g.resources
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\HoogmaatheideApp.dll
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\HoogmaatheideApp.pdb
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\XapCacheFile.xml
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\Newtonsoft.Json.dll
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\Newtonsoft.Json.pdb
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\Newtonsoft.Json.xml
