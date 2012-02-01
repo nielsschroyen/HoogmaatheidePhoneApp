@@ -14,3 +14,4 @@ C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\Xa
 C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\Newtonsoft.Json.dll
 C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\Newtonsoft.Json.pdb
 C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\Bin\Debug\Newtonsoft.Json.xml
+C:\code\WP7\HoogmaatheidePhoneApp\HoogmaatheideApp\HoogmaatheideApp\obj\Debug\RasInfoPage.g.i.cs

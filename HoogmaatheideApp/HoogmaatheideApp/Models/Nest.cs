@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Globalization;
+using System.Runtime.Serialization;
 
 namespace HoogmaatheideApp.Models
 {
@@ -15,6 +17,15 @@ namespace HoogmaatheideApp.Models
         public string YoutubeDatum { get; set; }
         [DataMember]
         public string Geboortedatum { get; set; }
+
+        public DateTime GDatum { get
+        {
+            var dates = Geboortedatum.Split('/');
+            return new DateTime(int.Parse(dates[2].Split(' ')[0]), int.Parse(dates[1]), int.Parse(dates[0]));
+        } }
+
+        public int Weken { get { return (DateTime.Now - GDatum).Days/7; } }
+
         [DataMember]
         public string Foto { get; set; }
         [DataMember]
