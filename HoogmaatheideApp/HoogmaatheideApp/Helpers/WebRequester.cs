@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Text;
 using System.Windows;
 using HoogmaatheideApp.Models;
 
@@ -14,7 +15,8 @@ namespace HoogmaatheideApp.Helpers
         public void GetNestenAsync(string url)
         {
             var client = new WebClient();
-
+            client.Encoding = Encoding.UTF8;
+         
             client.DownloadStringCompleted += Downloaded;
             try
             {

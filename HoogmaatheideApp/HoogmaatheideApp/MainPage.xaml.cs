@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using HoogmaatheideApp.Helpers;
 using HoogmaatheideApp.Models;
 using HoogmaatheideApp.ViewModels;
@@ -13,7 +14,7 @@ namespace HoogmaatheideApp
         public MainPage()
         {
             InitializeComponent();
-            DataContext = new MainPageViewModel();
+            DataContext = new MainPageViewModel(_fadeIn);
 
         }
 
@@ -21,9 +22,29 @@ namespace HoogmaatheideApp
         {
             if (_listbox.SelectedItem != null)
             {
-                PhoneApplicationService.Current.State[Constants.OpenRas] = _listbox.SelectedItem;
-                ((PhoneApplicationFrame)Application.Current.RootVisual).Navigate(Constants.EditPageUri);
+                if (((Ras)_listbox.SelectedItem).Nesten.Count == 0)
+                {
+                    _listbox.SelectedItem = null;
+                    return;
+                }
+                _fadeAllOut.Completed+=FadeAllOutCompleted;
+                _fadeAllOut.Begin();
+               
+                
             }
+        }
+
+        private void FadeAllOutCompleted(object sender, EventArgs e)
+        {
+            PhoneApplicationService.Current.State[Constants.OpenRas] = _listbox.SelectedItem;
+            ((PhoneApplicationFrame)Application.Current.RootVisual).Navigate(Constants.EditPageUri);
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            _listbox.SelectedItem = null;
+            _fadeAllIn.Begin();
+            base.OnNavigatedTo(e);
         }
     }
 }

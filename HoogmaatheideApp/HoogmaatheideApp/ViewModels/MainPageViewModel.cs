@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Media.Animation;
 using HoogmaatheideApp.Helpers;
 using HoogmaatheideApp.Models;
 
@@ -6,6 +7,7 @@ namespace HoogmaatheideApp.ViewModels
 {
     public class MainPageViewModel:NotifyPropertyChangedBase
     {
+        private readonly Storyboard _fadeIn;
         private List<Ras> _rassen;
         public List<Ras> Rassen
         {
@@ -15,9 +17,10 @@ namespace HoogmaatheideApp.ViewModels
             }
         }
 
-        public MainPageViewModel()
+        public MainPageViewModel(Storyboard fadeIn)
         {
-          var webRequester = new WebRequester();
+            _fadeIn = fadeIn;
+            var webRequester = new WebRequester();
 
             webRequester.RetrieveNestenCompleted+=webRequester_RetrieveNestenCompleted;
             webRequester.GetNestenAsync(@"http://kennel.hoogmaatheide.be/scripts/json.php");
@@ -29,6 +32,7 @@ namespace HoogmaatheideApp.ViewModels
             if (e.Exception == null)
             {
                 Rassen = e.Rassen;
+                _fadeIn.Begin();
             }
         }
 

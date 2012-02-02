@@ -68,6 +68,7 @@
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="Helpers\JsonSerialiser.cs" />
     <Compile Include="Helpers\WebRequester.cs" />
+    <Compile Include="Helpers\ZeroToNullConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
