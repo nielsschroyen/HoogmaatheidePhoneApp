@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Runtime.Serialization;
+using HoogmaatheideApp.ViewModels;
 
 namespace HoogmaatheideApp.Models
 {

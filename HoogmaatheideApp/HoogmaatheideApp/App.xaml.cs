@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -33,9 +34,10 @@ namespace HoogmaatheideApp
 
             // Standard Silverlight initialization
             InitializeComponent();
-
+        //    MergeCustomColors();
             // Phone-specific initialization
             InitializePhoneApplication();
+            OverrideColorsViaCode();
 
             // Show graphics profiling information while debugging.
             if (System.Diagnostics.Debugger.IsAttached)
@@ -102,6 +104,29 @@ namespace HoogmaatheideApp
                 System.Diagnostics.Debugger.Break();
             }
         }
+
+        private void OverrideColorsViaCode()
+        {
+            (App.Current.Resources["PhoneForegroundBrush"] as SolidColorBrush).Color = Colors.Black; 
+            (App.Current.Resources["PhoneBackgroundBrush"] as SolidColorBrush).Color = Colors.White;
+        } 
+
+
+        private void MergeCustomColors()
+        {
+            var dictionaries = new ResourceDictionary();
+            var source = String.Format("/HoogmaatheideApp;component/Styles/Styles.xaml"); 
+            var themeStyles = new ResourceDictionary { Source = new Uri(source, UriKind.Relative) }; 
+            dictionaries.MergedDictionaries.Add(themeStyles); 
+            ResourceDictionary appResources = App.Current.Resources; 
+            foreach (DictionaryEntry entry in dictionaries.MergedDictionaries[0]) 
+            { var colorBrush = entry.Value as SolidColorBrush; 
+                var existingBrush = appResources[entry.Key] as SolidColorBrush;
+                if (existingBrush != null && colorBrush != null) 
+                { existingBrush.Color = colorBrush.Color; }
+            }
+        } 
+
 
         #region Phone application initialization
 

@@ -6,65 +6,79 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Helpers="clr-namespace:HoogmaatheideApp.Helpers" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:Helpers="clr-namespace:HoogmaatheideApp.Helpers" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="false"
+    shell:SystemTray.BackgroundColor="White"         
+    shell:SystemTray.ForegroundColor="Black"
+    Background="White">
     <phone:PhoneApplicationPage.Resources>
-        <Helpers:ZeroToNullConverter x:Key="ZeroToNullConverter"/>
-        <Storyboard x:Name="_fadeIn">
-            <DoubleAnimation Storyboard.TargetName="_listbox"       
-                             Storyboard.TargetProperty="Opacity" From="0.0"      
-                             To="1.0" Duration="0:0:1" />
-        </Storyboard>
-        <Storyboard x:Name="_fadeAllOut">
-            <DoubleAnimation Storyboard.TargetName="LayoutRoot"       
-                             Storyboard.TargetProperty="Opacity" From="1"      
-                             To="0.0" Duration="0:0:0.3" />
-        </Storyboard>
-        <Storyboard x:Name="_fadeAllIn">
-            <DoubleAnimation Storyboard.TargetName="LayoutRoot"       
-                             Storyboard.TargetProperty="Opacity" From="0"      
-                             To="1.0" Duration="0:0:0.3" />
-        </Storyboard>
+        <Helpers:ZeroToVisibilityConverter x:Key="ZeroToVisibilityConverter"/>
+        <Helpers:ZeroToNestenConverter x:Key="ZeroToNestenConverter"/>
+        <Helpers:ZeroToTevenConverter x:Key="ZeroToTevenConverter"/>
+        <Helpers:ZeroToReuenConverter x:Key="ZeroToReuenConverter"/>
+        <LinearGradientBrush x:Key="recBrushTop" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="#ffffffff"/>
+                <GradientStop Offset="1" Color="#00ffffff" />
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="recBrushBottom" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0" Color="#00ffffff"/>
+                <GradientStop Offset="1" Color="#ffffffff"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
     </phone:PhoneApplicationPage.Resources>
 
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent" Opacity="0">
+    <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+                <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,20" Opacity="0">
             <TextBlock x:Name="ApplicationTitle" Text="HOOGMAATHEIDE" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="Beschikbaarheid" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="64"/>
-        </StackPanel>
+            </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="_listbox" SelectionChanged="ListboxSelectionChanged" ItemsSource="{Binding Rassen}">
+            <ListBox x:Name="_listbox" SelectionChanged="ListboxSelectionChanged" ItemsSource="{Binding Rassen}"  >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                         <StackPanel Margin="0 5 20 5">
+                         <StackPanel Margin="10 5 20 5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5" />
+                                    <ColumnDefinition Width="3" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+
+                                <Rectangle Fill="{StaticResource PhoneAccentBrush}" VerticalAlignment="top" HorizontalAlignment="Right" 
+                                           Height="27" Margin="0 13 0 0" Width="3" Visibility="{Binding AantalNesten,Converter={StaticResource ZeroToVisibilityConverter}}" />
+                                <StackPanel Margin="6 0 0 0" Grid.Column="1">
+                                    <TextBlock Text="{Binding Naam}"  FontSize="36"/>
+
+                                    <TextBlock Margin="0 -5" Visibility="{Binding AantalNesten,Converter={StaticResource ZeroToVisibilityConverter}}" >
+                                                <Run Text="{Binding AantalReuen}" />
+                                                <Run Text="{Binding AantalReuen,Converter={StaticResource ZeroToReuenConverter}}"  />
+                                                <Run Text="-"  />
+                                                <Run Text="{Binding AantalTeven}" />
+                                                <Run Text="{Binding AantalTeven,Converter={StaticResource ZeroToTevenConverter}}"  />
+                                                <Run Text="Beschikbaar"  />
+                                    </TextBlock>
+                                </StackPanel>
                                 
-                                <Rectangle Fill="{StaticResource PhoneAccentBrush}" Margin="0 10 0 5" Visibility="{Binding Nesten.Count,Converter={StaticResource ZeroToNullConverter}}" />
-                                <TextBlock Text="{Binding Naam}" Margin="10 0 0 0" Grid.Column="1"  FontSize="36" TextWrapping="Wrap"/>
                             </Grid>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Rectangle Height="20" Fill="{StaticResource recBrushTop }" VerticalAlignment="Top"/>
+            <Rectangle Height="20" Fill="{StaticResource recBrushBottom }" VerticalAlignment="Bottom"/>
         </Grid>
-    </Grid>
+        </Grid>
 
 </phone:PhoneApplicationPage>

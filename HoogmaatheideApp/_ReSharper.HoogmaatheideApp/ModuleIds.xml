@@ -1,3 +1,6 @@
 <Modules>
   <Module PersistentId="E29D4582-B0D9-42AC-BBEB-B974DBD4858C" ModuleId="HoogmaatheideApp" />
+  <Module PersistentId="7845573F-11A6-4F32-A277-A178EA3FD892" ModuleId="Animations" />
+  <Module PersistentId="8F9F7C96-A3ED-4F70-990B-28D2BBF1E51D" ModuleId="PathAnimation" />
+  <Module PersistentId="E844927A-F399-4A89-98E6-6655A4CC3514" ModuleId="Handies" />
 </Modules>
